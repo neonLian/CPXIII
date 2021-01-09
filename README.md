@@ -1,6 +1,8 @@
 # CPXIII
 Scripts and checklist for CyberPatriot 2020-21 season
+
 Ubuntu and Debian
+
 McK. HS
 
 not for usage outside of MHS
