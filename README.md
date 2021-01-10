@@ -213,6 +213,7 @@ sudo apt remove rsh-client rsh-redone-client
 sudo apt remove talk
 sudo apt remove telnet
 sudo apt remove ldap-utils
+sudo apt remove yp-tools tftpd atftpd tftpd-hpa telnetd rsh-server rsh-redone-server
 ```
 
 ### Network connections
