@@ -106,7 +106,7 @@ Program install and remove (**Warning: this will not remove all hacking tools, y
 ```bash
 sudo apt remove -y nmap zenmap wireshark john ophcrack
 
-sudo apt install -y ufw libpam-cracklib
+sudo apt install -y ufw libpam-cracklib aide aide-common fail2ban
 ```
 
 Disable guest access
@@ -134,7 +134,7 @@ sudo sed -ri 's/^(password.*pam_unix\.so.*)$/\1 remember=5 minlen=8/' /etc/pam.d
 sudo sed -ri 's/PASS_MAX_DAYS\s*[0-9]*/PASS_MAX_DAYS 90/' /etc/login.defs
 sudo sed -ri 's/PASS_MIN_DAYS\s*[0-9]*/PASS_MIN_DAYS 10/' /etc/login.defs
 sudo sed -ri 's/PASS_WARN_AGE\s*[0-9]*/PASS_WARN_AGE 7/' /etc/login.defs
-sudo echo "auth required pam_tally2.so deny=5 onerr=fail unlock_time=30" >> /etc/pam.d/common-auth
+echo "auth required pam_tally2.so deny=5 onerr=fail unlock_time=30" | sudo tee -a /etc/pam.d/common-auth
 ```
 
 Secure permissions for important files
@@ -143,10 +143,36 @@ sudo chmod u=rw,go= /etc/shadow
 sudo chmod u=rw,go= /etc/sudoers
 sudo chmod u=rw,go=r /etc/passwd
 
+sudo chown root:root /boot/grub/grub.cfg
+sudo chmod og-rwx /boot/grub/grub.cfg
+```
+
+Secure root account (run lines one by one)
+```
+sudo passwd root
+```
+```
 sudo passwd -l root
 ```
 
+Memory Security
+```bash
+# Prevent core dumps
+echo -e "\n* hard core 0" | sudo tee -a /etc/security/limits.conf
+echo -e "\nfs.suid_dumpable = 0 | sudo tee -a /etc/sysctl.conf"
+sudo sysctl -w fs.suid_dumpable=0
+# ASLR
+echo "kernel.randomize_va_space = 2" | sudo tee -a /etc/sysctl.conf
+sydo sysctl -w kernel.randomize_va_space=2
+```
+
 # Check next
+
+### Updates
+Package repositories
+```apt-cache policy```
+GPG keys
+```apt-key list```
 
 ### Services
 List services
@@ -156,16 +182,60 @@ sudo service --status-all
 # Debian
 sudo systemctl list-unit-files
 ```
+
 Disable service
 `sudo systemctl disable <service>`
 
+Disable list of services (recommended to copy in a script file first and remove lines with needed services)
+```bash
+systemctl disable avahi-daemon
+systemctl disable cups
+systemctl disable ics-dhcp-server
+systemctl disable ics-dhcp-server6
+systemctl disable slapd
+systemctl disable nfs-server
+systemctl disable rpcbind
+systemctl disable bind9
+systemctl disable vsftpd
+systemctl disable apache2
+systemctl disable smbd
+systemctl disable squid
+systemctl disable snmpd
+systemctl disable rsync
+systemctl disable nis
+```
+
+Uninstall list of services (recommended to copy in a script file first and remove lines with needed services)
+```bash
+sudo apt remove nis
+sudo apt remove rsh-client rsh-redone-client
+sudo apt remove talk
+sudo apt remove telnet
+sudo apt remove ldap-utils
+```
+
 ### Network connections
 ```bash
+sudo netstat -ntulp
+```
+
+### Bootloader
+
 
 
 ### Cron Jobs
 ```bash
 ls -a "/etc/cron*"
+```
+Add regular AIDE check
+```bash
+(crontab -l 2>/dev/null; echo "0 5 * * * /usr/bin/aide.wrapper --config /etc/aide/aide.conf --check") | crontab -
+```
+
+# CIS Benchmarks
+
+```bash
+sudo apt install usg-cisbenchmark
 ```
 
 # Updates
@@ -175,6 +245,23 @@ ls -a "/etc/cron*"
 ```bash
 sudo apt update
 sudo apt upgrade
+```
+
+# Lynis Auditing
+
+Install lynis
+```bash
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C80E383C3DE9F082E01391A0366C67DE91CA5D5F
+sudo apt install apt-transport-https
+echo 'Acquire::Languages "none";' | sudo tee /etc/apt/apt.conf.d/99disable-translations
+echo "deb https://packages.cisofy.com/community/lynis/deb/ stable main" | sudo tee /etc/apt/sources.list.d/cisofy-lynis.list
+sudo apt update
+sudo apt install lynis
+```
+
+Run lynis
+```bash
+sudo lynis audit system -Q
 ```
 
 # Troubleshooting
