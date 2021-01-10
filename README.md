@@ -232,12 +232,6 @@ Add regular AIDE check
 (crontab -l 2>/dev/null; echo "0 5 * * * /usr/bin/aide.wrapper --config /etc/aide/aide.conf --check") | crontab -
 ```
 
-# CIS Benchmarks
-
-```bash
-sudo apt install usg-cisbenchmark
-```
-
 # Updates
 
 **Automatic updates must be enabled in the GUI before running the terminal commands.**
