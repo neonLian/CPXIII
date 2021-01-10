@@ -139,18 +139,19 @@ echo "auth required pam_tally2.so deny=5 onerr=fail unlock_time=30" | sudo tee -
 
 Secure permissions for important files
 ```bash
-sudo chmod u=rw,go= /etc/shadow
+sudo chmod o-rwx,g-wx /etc/shadow
+sudo chmod o-rwx,g-wx /etc/gshadow
+sudo chmod o-rwx,g-wx /etc/shadow-
+sudo chmod o-rwx,g-wx /etc/gshadow-
 sudo chmod u=rw,go= /etc/sudoers
 sudo chmod u=rw,go=r /etc/passwd
+sudo chmod u=rw,go=r /etc/group
 
 sudo chown root:root /boot/grub/grub.cfg
 sudo chmod og-rwx /boot/grub/grub.cfg
 ```
 
-Secure root account (run lines one by one)
-```
-sudo passwd root
-```
+Secure root account
 ```
 sudo passwd -l root
 ```
@@ -271,4 +272,9 @@ sudo dpkg --configure -a
 sudo apt update
 ```
 
-more stuff at [sumwonyuno.github.io/cp-lockdown](https://sumwonyuno.github.io/cp-lockdown)
+# Additional Resources
+
+https://github.com/Resistor52/SampleLinuxScripts
+
+https://sumwonyuno.github.io/cp-lockdown
+
