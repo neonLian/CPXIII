@@ -260,6 +260,10 @@ Run lynis
 sudo lynis audit system -Q
 ```
 
+# CIS Assessor tool
+
+https://learn.cisecurity.org/e/799323/l-799323-2019-11-15-3v7x/2mnnf/122157240?h=QZh8uSmWBBGchDMmePPmKujg2GFjSLbKRnpZCSk8Eog
+
 # Troubleshooting
 
 Could not lock /var/lib/dpkg/lock-frontend
