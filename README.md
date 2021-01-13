@@ -262,7 +262,17 @@ sudo lynis audit system -Q
 
 # CIS Assessor tool
 
-https://learn.cisecurity.org/e/799323/l-799323-2019-11-15-3v7x/2mnnf/122157240?h=QZh8uSmWBBGchDMmePPmKujg2GFjSLbKRnpZCSk8Eog
+Install Java: `sudo apt install openjdk-11-jre`
+
+Download CIS-CAT from https://learn.cisecurity.org/e/799323/l-799323-2019-11-15-3v7x/2mnnf/122157240?h=QZh8uSmWBBGchDMmePPmKujg2GFjSLbKRnpZCSk8Eog
+
+Extract the ZIP, navigate to the directory
+
+Make the script executable: `chmod a+x ./Assessor-CLI.sh`
+
+Run the script: `sudo ./Assessor-CLI.sh -i`
+
+Open the HTML file in the reports folder and review results
 
 # Troubleshooting
 
