@@ -123,6 +123,7 @@ Enable firewall
 ```bash
 sudo ufw default allow outgoing
 sudo ufw default deny incoming
+sudo ufw default deny routing
 sudo ufw reload
 sudo ufw enable
 ```
