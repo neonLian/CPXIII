@@ -290,6 +290,8 @@ sudo apt update
 
 # Additional Resources
 
+https://www.debian.org/doc/manuals/securing-debian-manual/
+
 https://github.com/Resistor52/SampleLinuxScripts
 
 https://sumwonyuno.github.io/cp-lockdown
