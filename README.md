@@ -106,7 +106,7 @@ Program install and remove (**Warning: this will not remove all hacking tools, y
 ```bash
 sudo apt remove -y nmap zenmap wireshark john ophcrack
 
-sudo apt install -y ufw libpam-cracklib aide aide-common fail2ban
+sudo apt install -y ufw libpam-cracklib aide aide-common fail2ban clamav auditd
 ```
 
 Disable guest access
@@ -131,7 +131,7 @@ sudo ufw enable
 Set password policies
 ```bash
 sudo sed -ri 's/^(password\s*requisite\s*pam_cracklib\.so.*)$/\1 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1/' /etc/pam.d/common-password
-sudo sed -ri 's/^(password.*pam_unix\.so.*)$/\1 remember=5 minlen=8/' /etc/pam.d/common-password
+sudo sed -ri 's/^(password.*pam_unix\.so.*)$/\1 remember=5 minlen=8 rounds=3/' /etc/pam.d/common-password
 sudo sed -ri 's/PASS_MAX_DAYS\s*[0-9]*/PASS_MAX_DAYS 90/' /etc/login.defs
 sudo sed -ri 's/PASS_MIN_DAYS\s*[0-9]*/PASS_MIN_DAYS 10/' /etc/login.defs
 sudo sed -ri 's/PASS_WARN_AGE\s*[0-9]*/PASS_WARN_AGE 7/' /etc/login.defs
@@ -150,6 +150,8 @@ sudo chmod u=rw,go=r /etc/group
 
 sudo chown root:root /boot/grub/grub.cfg
 sudo chmod og-rwx /boot/grub/grub.cfg
+
+sudo chmod u=rwx,go= /home/*
 ```
 
 Secure root account
