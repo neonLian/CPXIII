@@ -165,7 +165,7 @@ echo -e "\nfs.suid_dumpable = 0 | sudo tee -a /etc/sysctl.conf"
 sudo sysctl -w fs.suid_dumpable=0
 # ASLR
 echo "kernel.randomize_va_space = 2" | sudo tee -a /etc/sysctl.conf
-sydo sysctl -w kernel.randomize_va_space=2
+sudo sysctl -w kernel.randomize_va_space=2
 ```
 
 # Check next
@@ -190,21 +190,21 @@ Disable service
 
 Disable list of services (recommended to copy in a script file first and remove lines with needed services)
 ```bash
-systemctl disable avahi-daemon
-systemctl disable cups
-systemctl disable ics-dhcp-server
-systemctl disable ics-dhcp-server6
-systemctl disable slapd
-systemctl disable nfs-server
-systemctl disable rpcbind
-systemctl disable bind9
-systemctl disable vsftpd
-systemctl disable apache2
-systemctl disable smbd
-systemctl disable squid
-systemctl disable snmpd
-systemctl disable rsync
-systemctl disable nis
+sudo systemctl disable avahi-daemon
+sudo systemctl disable cups
+sudo systemctl disable ics-dhcp-server
+sudo systemctl disable ics-dhcp-server6
+sudo systemctl disable slapd
+sudo systemctl disable nfs-server
+sudo systemctl disable rpcbind
+sudo systemctl disable bind9
+sudo systemctl disable vsftpd
+sudo systemctl disable apache2
+sudo systemctl disable smbd
+sudo systemctl disable squid
+sudo systemctl disable snmpd
+sudo systemctl disable rsync
+sudo systemctl disable nis
 ```
 
 Uninstall list of services (recommended to copy in a script file first and remove lines with needed services)
