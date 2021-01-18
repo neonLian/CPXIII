@@ -170,26 +170,12 @@ echo "kernel.randomize_va_space = 2" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -w kernel.randomize_va_space=2
 ```
 
-# Check next
-
-### Updates
-Package repositories
-```apt-cache policy```
-GPG keys
-```apt-key list```
-
-### Services
-List services
+Boot security
 ```bash
-# Ubuntu
-sudo service --status-all
-# Debian
-sudo systemctl list-unit-files
+sudo grub-mkpasswd-pbkdf2
 ```
 
-Disable service
-`sudo systemctl disable <service>`
-
+### Unsafe services
 Disable list of services (recommended to copy in a script file first and remove lines with needed services)
 ```bash
 sudo systemctl disable avahi-daemon
@@ -211,13 +197,30 @@ sudo systemctl disable nis
 
 Uninstall list of services (recommended to copy in a script file first and remove lines with needed services)
 ```bash
-sudo apt remove -y nis
-sudo apt remove -y rsh-client rsh-redone-client
-sudo apt remove -y talk
-sudo apt remove -y telnet
-sudo apt remove -y ldap-utils
-sudo apt remove -y yp-tools tftpd atftpd tftpd-hpa telnetd rsh-server rsh-redone-server
+sudo apt remove -y nis rsh-client rsh-redone-client talk telnet ldap-utilsyp-tools tftpd atftpd tftpd-hpa telnetd rsh-server rsh-redone-server
 ```
+
+# Check next
+
+### Updates
+Package repositories
+```apt-cache policy```
+GPG keys
+```apt-key list```
+
+### Services
+List services
+```bash
+# Ubuntu
+sudo service --status-all
+# Debian
+sudo systemctl list-unit-files
+```
+
+Disable service
+`sudo systemctl disable <service>`
+
+
 
 ### Network connections
 ```bash
