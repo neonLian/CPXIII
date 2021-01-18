@@ -209,12 +209,12 @@ sudo systemctl disable nis
 
 Uninstall list of services (recommended to copy in a script file first and remove lines with needed services)
 ```bash
-sudo apt remove nis
-sudo apt remove rsh-client rsh-redone-client
-sudo apt remove talk
-sudo apt remove telnet
-sudo apt remove ldap-utils
-sudo apt remove yp-tools tftpd atftpd tftpd-hpa telnetd rsh-server rsh-redone-server
+sudo apt remove -y nis
+sudo apt remove -y rsh-client rsh-redone-client
+sudo apt remove -y talk
+sudo apt remove -y telnet
+sudo apt remove -y ldap-utils
+sudo apt remove -y yp-tools tftpd atftpd tftpd-hpa telnetd rsh-server rsh-redone-server
 ```
 
 ### Network connections
