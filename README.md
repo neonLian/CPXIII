@@ -223,8 +223,13 @@ Disable service
 
 
 ### Network connections
+Ubuntu:
 ```bash
 sudo netstat -ntulp
+```
+Debian:
+```bash
+sudo ss -ntulp
 ```
 
 ### Bootloader
@@ -233,7 +238,7 @@ sudo netstat -ntulp
 
 ### Cron Jobs
 ```bash
-ls -a "/etc/cron*"
+ls -a /etc/cron*
 ```
 Add regular AIDE check
 ```bash
