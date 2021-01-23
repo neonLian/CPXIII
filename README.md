@@ -194,6 +194,7 @@ for username in $(cut -d: -f1 /etc/passwd | grep -v -E "root|daemon|bin|sys|sync
                         No ) gpasswd -d $username sudo; break;;
                     esac
                 done
+                break;;
             No ) userdel $username && echo "Deleted $username"; break;;
         esac
     done
