@@ -104,9 +104,7 @@ sudo chmod a+rwx /cp
 
 Program install and remove (**Warning: this will not remove all hacking tools, you must check for those manually**)
 ```bash
-sudo apt remove -y nmap zenmap wireshark john ophcrack
-
-sudo apt install -y ufw libpam-cracklib aide aide-common fail2ban clamav auditd
+sudo apt remove -y nmap zenmap wireshark john ophcrack && sudo apt install -y ufw libpam-cracklib aide aide-common fail2ban clamav auditd
 ```
 
 Disable guest access
