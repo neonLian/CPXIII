@@ -273,6 +273,8 @@ sudo ss -ntulp
 ### Cron Jobs
 ```bash
 ls -a /etc/cron*
+sudo crontab -e
+sudo vim /etc/crontab
 ```
 Add regular AIDE check
 ```bash
