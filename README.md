@@ -69,6 +69,13 @@ Add/remove a user to/from a group
 sudo gpasswd -a user group
 sudo gpasswd -d user group
 ```
+
+Make file editable
+```bash
+sudo chmod a+rwx <file>
+sudo chattr -i <file>
+```
+
 # GUI-Based Settings
 
 ### Automatic Updates
