@@ -58,6 +58,16 @@ sudo useradd user
 sudo userdel user
 ```
 
+Change a user's password
+```bash
+sudo passwd user
+```
+
+Make a user's password expire
+```bash
+sudo passwd --expire user
+```
+
 Create/remove a group
 ```bash
 sudo groupadd group
