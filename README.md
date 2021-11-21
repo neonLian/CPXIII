@@ -33,6 +33,7 @@ Find files (replace \*.mp3 with the appropriate file extension)
 sudo updatedb
 locate "**/*.mp3"
 ```
+Note: If updatedb and locate do not work, you can install it with `sudo apt install locate`
 
 List all programs on the system (check for any potential hacking tools)
 ```bash
