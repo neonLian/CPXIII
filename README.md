@@ -90,8 +90,11 @@ sudo chattr -i <file>
 # GUI-Based Settings
 
 ### Automatic Updates
-GNOME Desktop
+
 - Search for the Software and Updates application
+- On the Ubuntu Software tab, check the boxes for 
+    - Canonical-supported free and open-source software
+    - Community-maintained free and open-source software
 - Choose the Updates tab
 - Check for updates daily and automatically download & install security updates
 Other
