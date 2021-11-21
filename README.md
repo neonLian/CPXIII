@@ -248,6 +248,8 @@ Uninstall list of services (recommended to copy in a script file first and remov
 sudo apt remove -y nis rsh-client rsh-redone-client talk telnet ldap-utilsyp-tools tftpd atftpd tftpd-hpa telnetd rsh-server rsh-redone-server
 ```
 
+Note: sometimes using systemctl is insufficient and it is necessary to `sudo apt remove` the service
+
 # Check next
 
 ### Check home directories for unsafe files
@@ -286,20 +288,32 @@ Debian:
 sudo ss -ntulp
 ```
 
-### Bootloader
-
-
+### Nopasswdlogin group
+No user should be in the `nopasswdlogin` group.
+Check for users with
+```bash
+sudo cat /etc/groups | grep "nopasswdlogin
+```
+remove with 
+```bash
+sudo gpasswd -d <user> nopasswdlogin
+```
 
 ### Cron Jobs
+Run each line separately
 ```bash
 ls -a /etc/cron*
+
 sudo crontab -e
+
 sudo vim /etc/crontab
 ```
 Add regular AIDE check
 ```bash
 (crontab -l 2>/dev/null; echo "0 5 * * * /usr/bin/aide.wrapper --config /etc/aide/aide.conf --check") | crontab -
 ```
+
+
 
 # Updates
 
