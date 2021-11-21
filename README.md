@@ -250,6 +250,12 @@ sudo apt remove -y nis rsh-client rsh-redone-client talk telnet ldap-utilsyp-too
 
 # Check next
 
+### Check home directories for unsafe files
+Examples of unsafe files: passwords or credit card information in plain text
+```
+ls -aR /home
+```
+
 ### Updates
 Package repositories
 ```apt-cache policy```
