@@ -307,11 +307,29 @@ ls -a /etc/cron*
 sudo crontab -e
 
 sudo vim /etc/crontab
+
+sudo vim /etc/anacrontab
 ```
 Add regular AIDE check
 ```bash
 (crontab -l 2>/dev/null; echo "0 5 * * * /usr/bin/aide.wrapper --config /etc/aide/aide.conf --check") | crontab -
 ```
+
+### File Differences
+
+Ensure diffutils is installed
+`sudo apt install diffutils`
+
+General command
+`diff <file1> <file2>`
+
+Difference without comments
+`diff -d -I '^#' -I '^ #' <file1> <file2>`
+
+Use git to download files to compare with (files are located in Diffs directory)
+`git clone https://github.com/neonLian/CPXIII`
+
+###
 
 
 
